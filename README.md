@@ -1,4 +1,4 @@
-#Discord Message Logger
+# Discord Message Logger
 >Features
 - Log all messages to JSON files
 - Log images, files, etc to a folder
