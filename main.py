@@ -2,6 +2,7 @@ import discord
 from os import getenv
 import ujson
 
+from sys import stdout
 from cryptography import fernet
 from threading import Thread
 from datetime import datetime
@@ -97,7 +98,7 @@ async def on_message(message):
         }
     }
     has_image = False if "http" not in msg else True
-    print("\x1b[95mUser\x1b[97m: \x1b[96m%s \x1b[95msaid\x1b[97m:\x1b[96m %s" % (makeAuthor(message.author), msg))
+    stdout.write("User: %s said: %s" % (makeAuthor(message.author), msg))
     log = logger(save_data, message.id)
     Thread(
         target=log.save,

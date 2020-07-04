@@ -1,2 +1,4 @@
-ujson
-discord
+ujson~=3.0.0
+discord~=1.0.1
+requests~=2.22.0
+cryptography~=2.8
