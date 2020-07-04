@@ -1,7 +1,7 @@
 from cryptography import fernet
 
 
-key = fernet.Fertnet.generate_key()
+key = fernet.Fernet.generate_key()
 
 with open("configs/enc.key", "w") as f:
     f.write(key)
