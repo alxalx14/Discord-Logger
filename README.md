@@ -1,4 +1,4 @@
-# Discord Message Logger
+#Discord Message Logger
 >Features
 - Log all messages to JSON files
 - Log images, files, etc to a folder
@@ -19,6 +19,11 @@
 - ujson module
 - discord module
 - discord bot/user authorization token
+
+>Usage
+1. Run encrypt.py to generate a key and encrypt your token.
+2. Place the text printed to the screen inside configs/startup.json, in the token field.
+3. Run main.py and watch it go.
 
 >Upcoming Features
 - WebPanel to manage\access logs
