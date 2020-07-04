@@ -35,8 +35,10 @@ bot_choice = {
 }
 
 for folder in folder_structure:
-    mkdir(folder)
-
+    try:
+        mkdir(folder)
+    except FileExistsError:
+        pass
 key = fernet.Fernet.generate_key()
 with open("configs/enc.key", "wb") as f:
     f.write(key)
