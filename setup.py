@@ -12,6 +12,8 @@ with open("requirements.txt", "r") as module_file:
 folder_structure = [
     "logs/",
     "logs/DM/",
+    "logs/Group DM/",
+    "logs/Servers/",
     "logs/Files/",
     "logs/Files/C# Files/",
     "logs/Files/C++ Files/",
@@ -24,9 +26,7 @@ folder_structure = [
     "logs/Files/Python Files/",
     "logs/Files/Text Files/",
     "logs/Files/Torrent Files/",
-    "logs/Files/XML Files/",
-    "Group DM/",
-    "Servers/"
+    "logs/Files/XML Files/"
 ]
 
 bot_choice = {
