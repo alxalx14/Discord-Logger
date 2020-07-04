@@ -58,14 +58,16 @@ class logger:
         """
         new_message = {}
         if path_exists:
-            with open(path_to_save, "r", encoding="utf-8") as old_file:
-                old_data = ujson.loads(old_file.read())
-            for _messageID in old_data:
-                new_message[_messageID] = old_data[_messageID]
+            try:
+                with open(path_to_save, "r", encoding="utf-8") as old_file:
+                    old_data = ujson.loads(old_file.read())
+                for _messageID in old_data:
+                    new_message[_messageID] = old_data[_messageID]
+            except ValueError:
+                pass
         new_message[self.id_key] = self.message[self.id_key]
 
         with open(path_to_save, "w", encoding="utf-8") as log_file:
-            log_file.write("\n\n\n")
             log_file.write(ujson.dumps(new_message, indent=8, ensure_ascii=False))
 
     def saveDM(self):

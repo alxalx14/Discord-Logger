@@ -9,6 +9,10 @@ from src.logger import logger
 
 
 def getConfig() -> dict:
+    """
+    Loads startup config, containing Token
+    :return:
+    """
     with open("configs/startup.json", "r") as f:
         return ujson.loads(f.read())
 
@@ -17,11 +21,21 @@ CONFIG = getConfig()
 
 
 def getEncryptionKey() -> bytes:
+    """
+    Reads the encryption key
+    :return:
+    """
     with open("configs/enc.key", "rb") as enc_file:
         return enc_file.read()
 
 
 def getToken() -> str:
+    """
+    Decrypts and returns
+    the decrypted token for
+    running the bot
+    :return:
+    """
     crypto = fernet.Fernet(getEncryptionKey())
     token_bytes = crypto.decrypt(CONFIG["token"].encode())
     return token_bytes.decode()
@@ -31,18 +45,36 @@ bot = discord.Client()
 
 
 def makeAuthor(author: object) -> str:
+    """
+    Combines authors name
+    and discriminator for
+    the full username
+    :param author:
+    :return:
+    """
     return "%s#%s" % (author.name, author.discriminator)
 
 
 @bot.event
 async def on_ready():
-    print(f"Discordius is online!")
+    """
+    Prints when it logge in
+    to the Bot/user account
+    :return:
+    """
+    print(f"Discord Message Logger 1.0")
 
 
 @bot.event
 async def on_message(message):
-    if message.author == bot.user or message is None:
-        return
+    """
+    Most importnat feature,
+    gets called whenever a
+    message is sent then builds
+    the log structure.
+    :param message:
+    :return:
+    """
     msg = message.clean_content if not message.attachments else message.attachments[0].url
     save_data = {
         message.id: {
@@ -72,4 +104,5 @@ async def on_message(message):
         args=(has_image,)
     ).start()
 
-bot.run(getToken(), bot=False)
+bot.run(getToken(), bot=CONFIG["bot"])
+
