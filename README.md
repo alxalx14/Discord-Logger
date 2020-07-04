@@ -29,3 +29,4 @@
 - WebPanel to manage\access logs
 - Download logs directly from discord
 - Statistics, avg messages/minute etc. 
+- Cloud Storage using Google Drive
