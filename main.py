@@ -98,7 +98,7 @@ async def on_message(message):
         }
     }
     has_image = False if "http" not in msg else True
-    stdout.write("User: %s said: %s" % (makeAuthor(message.author), msg))
+    stdout.write("\rUser: %s said: %s\n\n" % (makeAuthor(message.author), msg))
     log = logger(save_data, message.id)
     Thread(
         target=log.save,
